@@ -14,21 +14,21 @@ let snake = [  {x: 200, y: 200},
 
 function drawSnakePart(snakePart) 
 {  
-  snakeboard_ctx.fillStyle = 'lightblue';  
-  snakeboard_ctx.strokestyle = 'darkblue';
-  snakeboard_ctx.fillRect(snakePart.x, snakePart.y, 10, 10);  
-  snakeboard_ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
+  snakeboardCtx.fillStyle = 'lightblue';  
+  snakeboardCtx.strokestyle = 'darkblue';
+  snakeboardCtx.fillRect(snakePart.x, snakePart.y, 10, 10);  
+  snakeboardCtx.strokeRect(snakePart.x, snakePart.y, 10, 10);
 }
 
 function clearCanvas() {
   //  Select the colour to fill the drawing
-  snakeboard_ctx.fillStyle = board_background;
+  snakeboardCtx.fillStyle = board_background;
   //  Select the colour for the border of the canvas
-  snakeboard_ctx.strokestyle = board_border;
+  snakeboardCtx.strokestyle = board_border;
   // Draw a "filled" rectangle to cover the entire canvas
-  snakeboard_ctx.fillRect(0, 0, snakeboard.width, snakeboard.height);
+  snakeboardCtx.fillRect(0, 0, snakeboard.width, snakeboard.height);
   // Draw a "border" around the entire canvas
-  snakeboard_ctx.strokeRect(0, 0, snakeboard.width, snakeboard.height);
+  snakeboardCtx.strokeRect(0, 0, snakeboard.width, snakeboard.height);
 }
  
 /*Function that prints the parts*/
