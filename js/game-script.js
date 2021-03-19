@@ -1,10 +1,12 @@
 const snakeboard = document.getElementById("game-canvas")
 const snakeboardCtx = snakeboard.getContext('2d')
+let dx = 10
+let dy = 0
 
 const board_border = 'black';
-    const board_background = "white";
-    const snake_col = 'lightblue';
-    const snake_border = 'darkblue';
+const board_background = "white";
+const snake_col = 'lightblue';
+const snake_border = 'darkblue';
 
 let snake = [  {x: 200, y: 200},
   {x: 190, y: 200},
@@ -38,6 +40,18 @@ function drawSnake()
 }
 
 function main() {
-  clearCanvas();
-  drawSnake();
+  setTimeout(function onTick() {
+    clearCanvas()
+    move_snake()
+    drawSnake()
+    main()
+    console.log('hello')
+  }, 100)
+}
+
+function move_snake() 
+{  
+  const head = {x: snake[0].x + dx, y: snake[0].y};
+  snake.unshift(head);
+  snake.pop();
 }
