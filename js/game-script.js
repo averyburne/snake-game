@@ -55,3 +55,60 @@ function move_snake()
   snake.unshift(head);
   snake.pop();
 }
+
+function change_direction(event) 
+{  
+   const LEFT_KEY = 37;
+   const RIGHT_KEY = 39;
+   const UP_KEY = 38;
+   const DOWN_KEY = 40;
+ 
+   const keyPressed = event.keyCode;
+   const goingUp = dy === -10;
+   const goingDown = dy === 10;
+   const goingRight = dx === 10;  
+   const goingLeft = dx === -10;
+ 
+     if (keyPressed === LEFT_KEY && !goingRight)
+     {    
+          dx = -10;
+          dy = 0;  
+     }
+ 
+     if (keyPressed === UP_KEY && !goingDown)
+     {    
+          dx = 0;
+          dy = -10;
+     }
+ 
+     if (keyPressed === RIGHT_KEY && !goingLeft)
+     {    
+          dx = 10;
+          dy = 0;
+     }
+ 
+     if (keyPressed === DOWN_KEY && !goingUp)
+     {    
+          dx = 0;
+          dy = 10;
+     }
+     console.log(dy)
+}
+
+document.addEventListener("keydown", change_direction)
+
+function has_game_ended()
+{  
+  for (let i = 4; i < snake.length; i++)
+  {    
+    const has_collided = snake[i].x === snake[0].x && snake[i].y === snake[0].y
+    if (has_collided) 
+      return true
+  }
+  const hitLeftWall = snake[0].x < 0;  
+  const hitRightWall = snake[0].x > snakeboard.width - 10;
+  const hitToptWall = snake[0].y &lt; 0;
+  const hitBottomWall = snake[0].y > snakeboard.height - 10;
+ 
+  return hitLeftWall ||  hitRightWall || hitToptWall || hitBottomWall
+}
