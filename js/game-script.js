@@ -1,10 +1,11 @@
 const snakeboard = document.getElementById("game-canvas")
 const snakeboardCtx = snakeboard.getContext('2d')
+let changingDirections = false
 let dx = 10
 let dy = 0
 
 const board_border = 'black';
-const board_background = "white";
+const board_background = 'white';
 const snake_col = 'lightblue';
 const snake_border = 'darkblue';
 
@@ -14,12 +15,16 @@ let snake = [  {x: 200, y: 200},
   {x: 170, y: 200},
   {x: 160, y: 200},];
 
-function drawSnakePart(snakePart) 
-{  
-  snakeboardCtx.fillStyle = 'lightblue';  
-  snakeboardCtx.strokestyle = 'darkblue';
-  snakeboardCtx.fillRect(snakePart.x, snakePart.y, 10, 10);  
-  snakeboardCtx.strokeRect(snakePart.x, snakePart.y, 10, 10);
+document.addEventListener("keydown", change_direction)
+
+
+function main() {
+  setTimeout(function onTick() {
+    clearCanvas()
+    move_snake()
+    drawSnake()
+    main()
+   }, 100)
 }
 
 function clearCanvas() {
@@ -32,23 +37,21 @@ function clearCanvas() {
   // Draw a "border" around the entire canvas
   snakeboardCtx.strokeRect(0, 0, snakeboard.width, snakeboard.height);
 }
- 
+
 /*Function that prints the parts*/
 function drawSnake() 
 {  
   snake.forEach(drawSnakePart);
 }
 
-function main() {
-  setTimeout(function onTick() {
-    clearCanvas()
-    move_snake()
-    drawSnake()
-    main()
-    console.log('hello')
-  }, 100)
+function drawSnakePart(snakePart) 
+{  
+  snakeboardCtx.fillStyle = 'lightblue';  
+  snakeboardCtx.strokestyle = 'darkblue';
+  snakeboardCtx.fillRect(snakePart.x, snakePart.y, 10, 10);  
+  snakeboardCtx.strokeRect(snakePart.x, snakePart.y, 10, 10);
 }
-
+ 
 function move_snake() 
 {  
   const head = {x: snake[0].x + dx, y: snake[0].y};
@@ -93,9 +96,10 @@ function change_direction(event)
           dy = 10;
      }
      console.log(dy)
+     console.log(goingDown)
+     console.log(goingLeft, 'left')
+     console.log(goingRight, 'right')
 }
-
-document.addEventListener("keydown", change_direction)
 
 function has_game_ended()
 {  
@@ -111,4 +115,19 @@ function has_game_ended()
   const hitBottomWall = snake[0].y > snakeboard.height - 10;
  
   return hitLeftWall ||  hitRightWall || hitToptWall || hitBottomWall
+}
+
+function random_food(min, max)
+{  
+   return Math.round((Math.random() * (max-min) + min) / 10) * 10;
+}
+ 
+function gen_food() 
+{  
+   food_x = random_food(0, snakeboard.width - 10);
+   food_y = random_food(0, snakeboard.height - 10);
+   snake.forEach(function has_snake_eaten_food(part) {
+        const has_eaten = part.x == food_x && part.y == food_y;
+        if (has_eaten) gen_food();
+      });
 }
