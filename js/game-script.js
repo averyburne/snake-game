@@ -131,3 +131,11 @@ function gen_food()
         if (has_eaten) gen_food();
       });
 }
+
+function drawFood()
+{
+      snakeboard_ctx.fillStyle = 'lightgreen;
+      snakeboard_ctx.strokestyle = 'darkgreen';
+      snakeboard_ctx.fillRect(food_x, food_y, 10, 10);
+      snakeboard_ctx.strokeRect(food_x, food_y, 10, 10);
+}
