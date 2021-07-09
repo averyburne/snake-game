@@ -19,12 +19,11 @@ document.addEventListener("keydown", changeDirection)
 
 
 function main() {
-  if (has_game_ended()) return;
+  if (checkifGameEnded()) return;
   setTimeout(function onTick() {
     clearCanvas()
     moveSnake()
     drawSnake()
-    console.log(snake[0].x)
     main()
    }, 100)
 }
@@ -97,18 +96,14 @@ function changeDirection(event)
           dx = 0;
           dy = 10;
      }
-     console.log(dy)
-     console.log(goingDown)
-     console.log(goingLeft, 'left')
-     console.log(goingRight, 'right')
 }
 
-function has_game_ended()
+function checkifGameEnded()
 {  
   for (let i = 4; i < snake.length; i++)
   {    
-    const has_collided = snake[i].x === snake[0].x && snake[i].y === snake[0].y
-    if (has_collided) 
+    const hasCollided = snake[i].x === snake[0].x && snake[i].y === snake[0].y
+    if (hasCollided) 
       return true
   }
   const hitLeftWall = snake[0].x < 0;  
