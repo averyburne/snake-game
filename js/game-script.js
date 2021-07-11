@@ -64,7 +64,7 @@ function moveSnake()
   const has_eaten_food = snake[0].x === food_x && snake[0].y === food_y;
       if (has_eaten_food) {
         // Generate new food location
-        gen_food();
+        genFood();
       } else {
         // Remove the last part of snake body
         snake.pop();
@@ -132,8 +132,8 @@ function randomFood(min, max)
  
 function genFood() 
 {  
-   food_x = random_food(0, snakeboard.width - 10);
-   food_y = random_food(0, snakeboard.height - 10);
+   food_x = randomFood(0, snakeboard.width - 10);
+   food_y = randomFood(0, snakeboard.height - 10);
    snake.forEach(function has_snake_eaten_food(part) {
         const has_eaten = part.x == food_x && part.y == food_y;
         if (has_eaten) genFood();
