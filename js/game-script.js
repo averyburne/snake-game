@@ -4,6 +4,9 @@ const snakeboardCtx = snakeboard.getContext('2d')
 let dx = 10
 let dy = 0
 
+let food_x
+let food_y
+
 const boardBorder = 'black';
 const boardBackground = 'white';
 const snakeCol = 'lightblue';
@@ -22,6 +25,7 @@ function main() {
   if (checkifGameEnded()) return;
   setTimeout(function onTick() {
     clearCanvas()
+    drawFood()
     moveSnake()
     drawSnake()
     main()
@@ -57,7 +61,14 @@ function moveSnake()
 {  
   const head = {x: snake[0].x + dx, y: snake[0].y + dy};
   snake.unshift(head);
-  snake.pop();
+  const has_eaten_food = snake[0].x === food_x && snake[0].y === food_y;
+      if (has_eaten_food) {
+        // Generate new food location
+        gen_food();
+      } else {
+        // Remove the last part of snake body
+        snake.pop();
+      }
 }
 
 function changeDirection(event) 
@@ -114,25 +125,25 @@ function checkifGameEnded()
   return hitLeftWall ||  hitRightWall || hitToptWall || hitBottomWall
 }
 
-// function random_food(min, max)
-// {  
-//    return Math.round((Math.random() * (max-min) + min) / 10) * 10;
-// }
+function randomFood(min, max)
+{  
+   return Math.round((Math.random() * (max-min) + min) / 10) * 10;
+}
  
-// function gen_food() 
-// {  
-//    food_x = random_food(0, snakeboard.width - 10);
-//    food_y = random_food(0, snakeboard.height - 10);
-//    snake.forEach(function has_snake_eaten_food(part) {
-//         const has_eaten = part.x == food_x && part.y == food_y;
-//         if (has_eaten) gen_food();
-//       });
-// }
+function genFood() 
+{  
+   food_x = random_food(0, snakeboard.width - 10);
+   food_y = random_food(0, snakeboard.height - 10);
+   snake.forEach(function has_snake_eaten_food(part) {
+        const has_eaten = part.x == food_x && part.y == food_y;
+        if (has_eaten) genFood();
+      });
+}
 
-// function drawFood()
-// {
-//       snakeboardCtx.fillStyle = 'lightgreen;
-//       snakeboardCtx.strokestyle = 'darkgreen';
-//       snakeboardCtx.fillRect(food_x, food_y, 10, 10);
-//       snakeboardCtx.strokeRect(food_x, food_y, 10, 10);
-// }
+function drawFood()
+{
+      snakeboardCtx.fillStyle = 'lightgreen';
+      snakeboardCtx.strokestyle = 'darkgreen';
+      snakeboardCtx.fillRect(food_x, food_y, 10, 10);
+      snakeboardCtx.strokeRect(food_x, food_y, 10, 10);
+}
