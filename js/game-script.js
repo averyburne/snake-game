@@ -3,6 +3,7 @@ const snakeboardCtx = snakeboard.getContext('2d')
 // let changingDirections = false
 let dx = 10
 let dy = 0
+let score = 0
 
 let food_x
 let food_y
@@ -65,6 +66,8 @@ function moveSnake()
       if (has_eaten_food) {
         // Generate new food location
         genFood();
+        score += 10
+        document.getElementById('score-counter').innerHTML = score
       } else {
         // Remove the last part of snake body
         snake.pop();
