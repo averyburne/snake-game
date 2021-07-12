@@ -1,5 +1,8 @@
 const snakeboard = document.getElementById("game-canvas")
 const snakeboardCtx = snakeboard.getContext('2d')
+const resetButton = document.getElementById('reset-button')
+resetButton.style.visibility = "hidden"
+let gameEnded = false
 // let changingDirections = false
 let dx = 10
 let dy = 0
@@ -23,7 +26,10 @@ document.addEventListener("keydown", changeDirection)
 
 
 function main() {
-  if (checkifGameEnded()) return;
+  if (checkifGameEnded()){
+    resetButton.style.visibility = "visible"
+    return
+  }
   setTimeout(function onTick() {
     clearCanvas()
     drawFood()
@@ -31,6 +37,14 @@ function main() {
     drawSnake()
     main()
    }, 100)
+}
+
+function resetSnake() {
+  snake = [  {x: 200, y: 200},
+    {x: 190, y: 200},
+    {x: 180, y: 200},
+    {x: 170, y: 200},
+    {x: 160, y: 200},];
 }
 
 function clearCanvas() {
@@ -124,7 +138,8 @@ function checkifGameEnded()
   const hitRightWall = snake[0].x > snakeboard.width - 10;
   const hitToptWall = snake[0].y < 0;
   const hitBottomWall = snake[0].y > snakeboard.height - 10;
- 
+
+
   return hitLeftWall ||  hitRightWall || hitToptWall || hitBottomWall
 }
 
