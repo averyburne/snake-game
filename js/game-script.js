@@ -1,6 +1,7 @@
 const snakeboard = document.getElementById("game-canvas")
 const snakeboardCtx = snakeboard.getContext('2d')
 const resetButton = document.getElementById('reset-button')
+const scoreCounter = document.getElementById('score-counter')
 resetButton.style.visibility = "hidden"
 let gameEnded = false
 // let changingDirections = false
@@ -45,6 +46,8 @@ function resetSnake() {
     {x: 180, y: 200},
     {x: 170, y: 200},
     {x: 160, y: 200},];
+  score = 0
+  scoreCounter.innerHTML = score
 }
 
 function clearCanvas() {
@@ -81,7 +84,7 @@ function moveSnake()
         // Generate new food location
         genFood();
         score += 10
-        document.getElementById('score-counter').innerHTML = score
+        scoreCounter.innerHTML = score
       } else {
         // Remove the last part of snake body
         snake.pop();
