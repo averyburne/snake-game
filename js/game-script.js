@@ -28,6 +28,7 @@ document.addEventListener("keydown", changeDirection)
 
 function main() {
   if (checkifGameEnded()){
+    scoreCounter.innerHTML = score + " You lose!"
     resetButton.style.visibility = "visible"
     return
   }
@@ -48,6 +49,8 @@ function resetSnake() {
     {x: 160, y: 200},];
   score = 0
   scoreCounter.innerHTML = score
+  dx = 10
+  dy = 0
 }
 
 function clearCanvas() {
@@ -97,32 +100,37 @@ function changeDirection(event)
    const RIGHT_KEY = 39;
    const UP_KEY = 38;
    const DOWN_KEY = 40;
+   const W_KEY = 87;
+   const A_KEY = 65;
+   const S_KEY = 83;
+   const D_KEY = 68;
  
    const keyPressed = event.keyCode;
+   console.log(keyPressed)
    const goingUp = dy === -10;
    const goingDown = dy === 10;
    const goingRight = dx === 10;  
    const goingLeft = dx === -10;
  
-     if (keyPressed === LEFT_KEY && !goingRight)
+     if ((keyPressed === LEFT_KEY || keyPressed === A_KEY) && !goingRight)
      {    
           dx = -10;
           dy = 0;  
      }
  
-     if (keyPressed === UP_KEY && !goingDown)
+     if ((keyPressed === UP_KEY || keyPressed === W_KEY) && !goingDown)
      {    
           dx = 0;
           dy = -10;
      }
  
-     if (keyPressed === RIGHT_KEY && !goingLeft)
+     if ((keyPressed === RIGHT_KEY || keyPressed === D_KEY) && !goingLeft)
      {    
           dx = 10;
           dy = 0;
      }
  
-     if (keyPressed === DOWN_KEY && !goingUp)
+     if ((keyPressed === DOWN_KEY || keyPressed === S_KEY) && !goingUp)
      {    
           dx = 0;
           dy = 10;
