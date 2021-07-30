@@ -106,7 +106,6 @@ function changeDirection(event)
    const D_KEY = 68;
  
    const keyPressed = event.keyCode;
-   console.log(keyPressed)
    const goingUp = dy === -10;
    const goingDown = dy === 10;
    const goingRight = dx === 10;  
