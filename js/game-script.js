@@ -4,7 +4,6 @@ const resetButton = document.getElementById('reset-button')
 const scoreCounter = document.getElementById('score-counter')
 resetButton.style.visibility = "hidden"
 let gameEnded = false
-// let changingDirections = false
 let dx = 10
 let dy = 0
 let score = 0
