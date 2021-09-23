@@ -24,6 +24,12 @@ let snake = [  {x: 200, y: 200},
 
 document.addEventListener("keydown", changeDirection)
 
+window.onload = function() {
+  clearCanvas()
+  drawSnake()
+  genFood()
+  drawFood()
+}
 
 function main() {
   if (checkifGameEnded()){
