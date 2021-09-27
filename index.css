@@ -1,6 +1,26 @@
+#button-wrapper {
+    /* display: flex;
+    justify-content: center; */
+    border: 2px solid black;
+    height: 80px;
+    text-align: center;
+}
+
+.game-button {
+    display: block;
+    /* height: 20px; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
 #game-canvas {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#score-counter {
+    text-align: center;
 }

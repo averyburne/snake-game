@@ -33,7 +33,7 @@ window.onload = function() {
 
 function main() {
   if (checkifGameEnded()){
-    scoreCounter.innerHTML = score + " You lose!"
+    scoreCounter.innerHTML = score + "\nYou lose!"
     resetButton.style.visibility = "visible"
     return
   }
