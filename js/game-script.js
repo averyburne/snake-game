@@ -3,6 +3,7 @@ const snakeboardCtx = snakeboard.getContext('2d')
 const resetButton = document.getElementById('reset-button')
 const scoreCounter = document.getElementById('score-counter')
 const scoreTable = document.getElementById('score-table')
+const highScores = []
 resetButton.style.visibility = "hidden"
 let gameEnded = false
 let dx = 10
@@ -36,9 +37,18 @@ function main() {
   if (checkifGameEnded()){
     scoreCounter.innerHTML = `${score} You lose!`
     resetButton.style.visibility = "visible"
-    let newScore = document.createElement('p')
-    newScore.innerHTML = `${score}`
-    scoreTable.appendChild(newScore)
+    let gameScore = score
+    highScores.push(gameScore)
+    highScores.sort(function(a, b){return b-a})
+    scoreTable.innerHTML = ''
+    console.log(highScores)
+    for (let i = 0; i < 10; i++) {
+      if (i < highScores.length) {
+        let newScore = document.createElement('p')
+        newScore.innerHTML = `${highScores[i]}`
+        scoreTable.appendChild(newScore)
+      }
+    }
     return
   }
   setTimeout(function onTick() {
