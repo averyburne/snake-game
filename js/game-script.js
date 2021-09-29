@@ -1,5 +1,6 @@
 const snakeboard = document.getElementById("game-canvas")
 const snakeboardCtx = snakeboard.getContext('2d')
+const startButton = document.getElementById('start-button')
 const resetButton = document.getElementById('reset-button')
 const scoreCounter = document.getElementById('score-counter')
 const scoreTable = document.getElementById('score-table')
@@ -18,11 +19,11 @@ const boardBackground = 'white';
 const snakeCol = 'lightblue';
 const snakeBorder = 'darkblue';
 
-let snake = [  {x: 200, y: 200},
-  {x: 190, y: 200},
-  {x: 180, y: 200},
-  {x: 170, y: 200},
-  {x: 160, y: 200},];
+let snake = [  {x: 202, y: 202},
+  {x: 192, y: 202},
+  {x: 182, y: 202},
+  {x: 172, y: 202},
+  {x: 162, y: 202}];
 
 document.addEventListener("keydown", changeDirection)
 
@@ -41,7 +42,7 @@ function main() {
     highScores.push(gameScore)
     highScores.sort(function(a, b){return b-a})
     scoreTable.innerHTML = ''
-    console.log(highScores)
+    startButton.style.visibility = 'hidden'
     for (let i = 0; i < 10; i++) {
       if (i < highScores.length) {
         let newScore = document.createElement('p')
@@ -61,11 +62,11 @@ function main() {
 }
 
 function resetSnake() {
-  snake = [  {x: 200, y: 200},
-    {x: 190, y: 200},
-    {x: 180, y: 200},
-    {x: 170, y: 200},
-    {x: 160, y: 200},];
+  snake = [  {x: 202, y: 202},
+    {x: 192, y: 202},
+    {x: 182, y: 202},
+    {x: 172, y: 202},
+    {x: 162, y: 202}];
   score = 0
   scoreCounter.innerHTML = score
   dx = 10
@@ -174,13 +175,13 @@ function checkifGameEnded()
 
 function randomFood(min, max)
 {  
-   return Math.round((Math.random() * (max-min) + min) / 10) * 10;
+   return (Math.round((Math.random() * (max-min) + min) / 10) * 10) + 2;
 }
  
 function genFood() 
 {  
-   food_x = randomFood(0, snakeboard.width - 10);
-   food_y = randomFood(0, snakeboard.height - 10);
+   food_x = randomFood(2, snakeboard.width - 10);
+   food_y = randomFood(2, snakeboard.height - 10);
    snake.forEach(function has_snake_eaten_food(part) {
         const has_eaten = part.x == food_x && part.y == food_y;
         if (has_eaten) genFood();
