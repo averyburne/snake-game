@@ -10,6 +10,13 @@ let gameEnded = false
 let dx = 10
 let dy = 0
 let score = 0
+let speed = document.getElementById('speed-slider').value
+
+if (document.getElementById('normal-speed').checked) {
+  speed = 100
+} else if (document.getElementById('fast-speed').checked) {
+  speed = 50
+}
 
 let food_x
 let food_y
@@ -52,13 +59,14 @@ function main() {
     }
     return
   }
+  console.log(speed)
   setTimeout(function onTick() {
     clearCanvas()
     drawFood()
     moveSnake()
     drawSnake()
     main()
-   }, 100)
+   }, speed)
 }
 
 function resetSnake() {
