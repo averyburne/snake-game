@@ -5,17 +5,29 @@ const resetButton = document.getElementById('reset-button')
 const scoreCounter = document.getElementById('score-counter')
 const scoreTable = document.getElementById('score-table')
 const highScores = []
+const difficultyForm = document.getElementById('difficulty-form').difficulty
 resetButton.style.visibility = "hidden"
 let gameEnded = false
 let dx = 10
 let dy = 0
 let score = 0
-let speed = document.getElementById('speed-slider').value
+let speed = 100
+// z
+// if (document.getElementById('normal-speed').checked) {
+//   speed = 100
+// } else if (document.getElementById('fast-speed').checked) {
+//   speed = 50
+// }
 
-if (document.getElementById('normal-speed').checked) {
-  speed = 100
-} else if (document.getElementById('fast-speed').checked) {
-  speed = 50
+var prev = null;
+for(var i = 0; i < difficultyForm.length; i++) {
+    difficultyForm[i].onclick = function () {
+        (prev)? console.log(prev.value):null;
+        if(this !== prev) {
+            prev = this;
+        }
+        speed = this.value
+    };
 }
 
 let food_x
@@ -59,7 +71,6 @@ function main() {
     }
     return
   }
-  console.log(speed)
   setTimeout(function onTick() {
     clearCanvas()
     drawFood()
