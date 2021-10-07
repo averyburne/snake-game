@@ -1,3 +1,4 @@
+'use strict'
 const snakeboard = document.getElementById("game-canvas")
 const snakeboardCtx = snakeboard.getContext('2d')
 const startButton = document.getElementById('start-button')
@@ -12,12 +13,19 @@ let dx = 10
 let dy = 0
 let score = 0
 let speed = 100
-// z
-// if (document.getElementById('normal-speed').checked) {
-//   speed = 100
-// } else if (document.getElementById('fast-speed').checked) {
-//   speed = 50
-// }
+// const dark = require('./dark-mode-switch.js')
+// console.log(dark)
+
+let darkSwitch = document.getElementById('darkSwitch')
+
+darkSwitch.addEventListener('change', function() {
+  if (this.checked) {
+    document.body.setAttribute("data-theme", "dark")
+    console.log('hi')
+  } else {
+    document.body.setAttribute("data-theme", "light")
+  }
+})
 
 var prev = null;
 for(var i = 0; i < difficultyForm.length; i++) {

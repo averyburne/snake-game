@@ -1,5 +1,9 @@
 [dark-theme="dark"] {
-    background-color: red !important;
+    background-color: blue !important;
+}
+
+[data-theme="light"] {
+    background-color: green !important;
 }
 
 #button-wrapper {
