@@ -1,3 +1,7 @@
+[dark-theme="dark"] {
+    background-color: red !important;
+}
+
 #button-wrapper {
     /* display: flex;
     justify-content: center; */
