@@ -15,6 +15,7 @@ let score = 0
 let speed = 100
 // const dark = require('./dark-mode-switch.js')
 // console.log(dark)
+console.log(document.getElementById('dark-wrapper').style)
 
 let darkSwitch = document.getElementById('darkSwitch')
 
@@ -29,6 +30,7 @@ darkSwitch.addEventListener('change', function() {
 
 var prev = null;
 for(var i = 0; i < difficultyForm.length; i++) {
+    console.log(this)
     difficultyForm[i].onclick = function () {
         (prev)? console.log(prev.value):null;
         if(this !== prev) {
@@ -72,7 +74,7 @@ function main() {
     startButton.style.visibility = 'hidden'
     for (let i = 0; i < 10; i++) {
       if (i < highScores.length) {
-        let newScore = document.createElement('p')
+        let newScore = document.createElement('tr')
         newScore.innerHTML = `${highScores[i]}`
         scoreTable.appendChild(newScore)
       }
