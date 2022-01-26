@@ -22,7 +22,6 @@ let darkSwitch = document.getElementById('darkSwitch')
 darkSwitch.addEventListener('change', function() {
   if (this.checked) {
     document.body.setAttribute("data-theme", "dark")
-    console.log('hi')
   } else {
     document.body.setAttribute("data-theme", "light")
   }
