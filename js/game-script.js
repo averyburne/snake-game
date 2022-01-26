@@ -13,16 +13,27 @@ let dx = 10
 let dy = 0
 let score = 0
 let speed = 100
+document.body.setAttribute("data-theme", "light")
 
 let darkSwitch = document.getElementById('darkSwitch')
 
-// darkSwitch.addEventListener('change', function() {
-//   if (this.checked) {
-//     document.body.setAttribute("data-theme", "dark")
-//   } else {
-//     document.body.setAttribute("data-theme", "light")
-//   }
-// })
+darkSwitch.addEventListener('change', function() {
+  if (this.checked) {
+    document.body.setAttribute("data-theme", "dark")
+    snakeCol = 'lightgreen'
+    foodFill = 'lightblue'
+    clearCanvas()
+    drawSnake()
+    drawFood()
+  } else {
+    document.body.setAttribute("data-theme", "light")
+    snakeCol = 'lightblue'
+    foodFill = 'lightgreen'
+    clearCanvas()
+    drawSnake()
+    drawFood()
+  }
+})
 
 
 // sets the speed value to whatver the user has selected on the radio buttons
@@ -41,10 +52,12 @@ for(var i = 0; i < difficultyForm.length; i++) {
 let food_x
 let food_y
 
-const boardBorder = 'black';
-const boardBackground = 'white';
-const snakeCol = 'lightblue';
-const snakeBorder = 'darkblue';
+let boardBorder = 'black';
+let boardBackground = 'white';
+let snakeCol = 'lightblue';
+let snakeBorder = 'darkblue';
+let foodStroke = 'darkgreen'
+let foodFill = 'lightgreen'
 
 // Initializes snake's position
 // The 2 added on is a buffer so it wouldn't overlap with the canvas border
@@ -235,8 +248,8 @@ function genFood()
 // Draws food at location determined in genFood()
 function drawFood()
 {
-      snakeboardCtx.fillStyle = 'lightgreen';
-      snakeboardCtx.strokestyle = 'darkgreen';
+      snakeboardCtx.fillStyle = foodFill;
+      snakeboardCtx.strokestyle = foodStroke;
       snakeboardCtx.fillRect(food_x, food_y, 10, 10);
       snakeboardCtx.strokeRect(food_x, food_y, 10, 10);
 }

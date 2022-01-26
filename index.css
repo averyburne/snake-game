@@ -1,9 +1,9 @@
 [data-theme="dark"] {
-    background-color: blue !important;
+    background-color: blue;
 }
 
 [data-theme="light"] {
-    background-color: green !important;
+    background-color: green;
 }
 
 h1 {
