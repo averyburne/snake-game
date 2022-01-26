@@ -13,20 +13,19 @@ let dx = 10
 let dy = 0
 let score = 0
 let speed = 100
-// const dark = require('./dark-mode-switch.js')
-// console.log(dark)
-console.log(document.getElementById('dark-wrapper').style)
 
 let darkSwitch = document.getElementById('darkSwitch')
 
-darkSwitch.addEventListener('change', function() {
-  if (this.checked) {
-    document.body.setAttribute("data-theme", "dark")
-  } else {
-    document.body.setAttribute("data-theme", "light")
-  }
-})
+// darkSwitch.addEventListener('change', function() {
+//   if (this.checked) {
+//     document.body.setAttribute("data-theme", "dark")
+//   } else {
+//     document.body.setAttribute("data-theme", "light")
+//   }
+// })
 
+
+// sets the speed value to whatver the user has selected on the radio buttons
 var prev = null;
 for(var i = 0; i < difficultyForm.length; i++) {
     console.log(this)
@@ -47,14 +46,19 @@ const boardBackground = 'white';
 const snakeCol = 'lightblue';
 const snakeBorder = 'darkblue';
 
+// Initializes snake's position
+// The 2 added on is a buffer so it wouldn't overlap with the canvas border
 let snake = [  {x: 202, y: 202},
   {x: 192, y: 202},
   {x: 182, y: 202},
   {x: 172, y: 202},
   {x: 162, y: 202}];
 
+// event listener for direction changes
 document.addEventListener("keydown", changeDirection)
 
+// starts the game off with the snake and game board ready to go
+// first food is generated
 window.onload = function() {
   clearCanvas()
   drawSnake()
@@ -62,6 +66,9 @@ window.onload = function() {
   drawFood()
 }
 
+// main game function runs continuously based on the speed the user has selected
+// checks if game has ended everytime
+// if it has then score is added to high score list and reset button appears
 function main() {
   if (checkifGameEnded()){
     scoreCounter.innerHTML = `${score} You lose!`
@@ -112,7 +119,7 @@ function clearCanvas() {
   snakeboardCtx.strokeRect(0, 0, snakeboard.width, snakeboard.height);
 }
 
-/*Function that prints the parts*/
+// Function that prints the parts
 function drawSnake() 
 {  
   snake.forEach(drawSnakePart);
@@ -125,7 +132,8 @@ function drawSnakePart(snakePart)
   snakeboardCtx.fillRect(snakePart.x, snakePart.y, 10, 10);  
   snakeboardCtx.strokeRect(snakePart.x, snakePart.y, 10, 10);
 }
- 
+
+// shifts snake one square over everytime the 
 function moveSnake() 
 {  
   const head = {x: snake[0].x + dx, y: snake[0].y + dy};
@@ -142,6 +150,8 @@ function moveSnake()
       }
 }
 
+// Adds keyboard event listeners for the moving snake
+// Can only move up and down when going left and right and vice versa
 function changeDirection(event) 
 {  
    const LEFT_KEY = 37;
@@ -184,6 +194,9 @@ function changeDirection(event)
      }
 }
 
+// Determines if snake is out of the canvas bounds
+// Also checks if head of snake is at the same position as any other part of the snake
+// starts at 4 since it cant hit any part of the snake until the fifth blcok
 function checkifGameEnded()
 {  
   for (let i = 4; i < snake.length; i++)
@@ -201,11 +214,14 @@ function checkifGameEnded()
   return hitLeftWall ||  hitRightWall || hitToptWall || hitBottomWall
 }
 
+// Chooses random location for the food next food to be located
+// Can't be where the snake currently is
 function randomFood(min, max)
 {  
    return (Math.round((Math.random() * (max-min) + min) / 10) * 10) + 2;
 }
- 
+
+// Generates a random location for the the food
 function genFood() 
 {  
    food_x = randomFood(2, snakeboard.width - 10);
@@ -216,6 +232,7 @@ function genFood()
       });
 }
 
+// Draws food at location determined in genFood()
 function drawFood()
 {
       snakeboardCtx.fillStyle = 'lightgreen';
