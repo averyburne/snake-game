@@ -15,8 +15,9 @@ let score = 0
 let speed = 100
 document.body.setAttribute("data-theme", "light")
 
-let darkSwitch = document.getElementById('darkSwitch')
+// let darkSwitch = document.getElementById('darkSwitch')
 
+// Dark mode changes the colors of the game canvas
 darkSwitch.addEventListener('change', function() {
   if (this.checked) {
     document.body.setAttribute("data-theme", "dark")
