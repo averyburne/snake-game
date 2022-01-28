@@ -1,9 +1,11 @@
 [data-theme="dark"] {
-    background-color: blue;
+    background-color: #695B58;
+    color: white;
 }
 
 [data-theme="light"] {
-    background-color: green;
+    background-color: white;
+    color: black;
 }
 
 h1 {

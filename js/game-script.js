@@ -20,15 +20,21 @@ let darkSwitch = document.getElementById('darkSwitch')
 darkSwitch.addEventListener('change', function() {
   if (this.checked) {
     document.body.setAttribute("data-theme", "dark")
-    snakeCol = 'lightgreen'
-    foodFill = 'lightblue'
+    snakeCol = 'green'
+    snakeBorder = 'lightgreen'
+    foodFill = 'blue'
+    foodStroke = 'lightblue'
+    boardBackground = 'grey'
     clearCanvas()
     drawSnake()
     drawFood()
   } else {
     document.body.setAttribute("data-theme", "light")
     snakeCol = 'lightblue'
+    snakeBorder = 'darkblue'
     foodFill = 'lightgreen'
+    foodStroke = 'darkgreen'
+    boardBackground = 'white'
     clearCanvas()
     drawSnake()
     drawFood()
