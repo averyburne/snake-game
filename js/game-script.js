@@ -96,12 +96,13 @@ function main() {
     let gameScore = score
     highScores.push(gameScore)
     highScores.sort(function(a, b){return b-a})
-    scoreTable.innerHTML = ''
+    scoreTable.innerHTML = '<th>Top 10 Scores</th>'
     startButton.style.visibility = 'hidden'
     for (let i = 0; i < 10; i++) {
       if (i < highScores.length) {
         let newScore = document.createElement('tr')
         newScore.innerHTML = `${highScores[i]}`
+        newScore.className = 'table-row'
         scoreTable.appendChild(newScore)
       }
     }
