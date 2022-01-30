@@ -1,4 +1,4 @@
-/* [data-theme="dark"] {
+[data-theme="dark"] {
     background-color: #695B58;
     color: white;
 }
@@ -6,7 +6,7 @@
 [data-theme="light"] {
     background-color: white;
     color: black;
-} */
+}
 
 h1 {
     border: 1px solid black;
@@ -46,7 +46,6 @@ h1 {
 }
 
 .top-10-container {
-    border: 1px solid black;
     /* display: inline; */
     width: 25vw;
 }
@@ -69,7 +68,6 @@ h1 {
         left: 50%;
     }
     .top-10-container {
-        background-color: lightsalmon;
         display: block;
         width: 50%;
         margin: auto;
