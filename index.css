@@ -65,8 +65,14 @@ h1 {
 @media only screen and (max-width: 660px) {
     .game-wrapper {
         position: fixed;
+        top: 50%;
+        left: 50%;
     }
     .top-10-container {
         background-color: lightsalmon;
+        display: block;
+        width: 50%;
+        margin: auto;
+        margin-top: 420px;
     }
 }
