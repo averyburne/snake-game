@@ -13,8 +13,8 @@ h1 {
 }
 
 #dark-wrapper {
-    border: 1px solid black;
-    margin-top: -20px;
+    /* border: 1px solid black; */
+    /* margin-top: -20px; */
 }
 
 #button-wrapper {
@@ -26,7 +26,7 @@ h1 {
 }
 
 .game-button {
-    display: block;
+    display: inline;
     /* height: 20px; */
     margin-left: auto;
     margin-right: auto;
@@ -50,12 +50,18 @@ h1 {
     width: 25vw;
 }
 
+table {
+    border-collapse: collapse;
+}
+
 .table-row {
     text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
 }
 
 .game-wrapper {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     /* position: relative; */
     /* top: 45%;
     left: 45%; */
@@ -69,6 +75,7 @@ h1 {
     }
     .top-10-container {
         display: block;
+        text-align: center;
         width: 50%;
         margin: auto;
         margin-top: 420px;

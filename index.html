@@ -9,11 +9,11 @@
     </head>
     <body>
         <h1>Snake</h1>
-        <div id="dark-wrapper" class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="darkSwitch">
-            <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-        </div>
         <div id="button-wrapper">
+            <span id="dark-wrapper" class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="darkSwitch">
+                <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+            </span>
             <button class="game-button" id="start-button" onclick="main();">Start Game</button>
             <button class="game-button" id="reset-button" onclick="resetSnake(); clearCanvas(); drawSnake(); main(); genFood();">Reset</button>
             <form id="difficulty-form">
