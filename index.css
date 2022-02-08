@@ -9,7 +9,7 @@
 }
 
 h1 {
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 #dark-wrapper {
@@ -43,6 +43,8 @@ h1 {
 
 #score-counter {
     text-align: center;
+    padding-top: 8px;
+    padding-bottom: 4px;
 }
 
 .top-10-container {
@@ -79,5 +81,12 @@ table {
         width: 50%;
         margin: auto;
         margin-top: 420px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #game-canvas {
+        width: 90vw;
+        height: 90vw;
     }
 }
